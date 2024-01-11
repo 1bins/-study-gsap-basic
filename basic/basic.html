@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP PART1</title>
+    <style>
+        body{
+            background: gray;
+        }
+        .orange, .pink{
+            width: 100px;
+            height: 100px;
+            background: orange;
+        }
+        .pink {background: pink;}
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+</head>
+<body>
+    <div class="orange"></div>
+    <hr>
+    <div class="pink"></div>
+    <script>
+        /**
+         * rotation 회전
+         * duartion 재생시간
+         * ★ percent를 사용하려면 x: '300%'보다는 xPercent: 300을 권장함
+         **/
+        // gsap.fromTo('.orange',
+        //     {x: 300, y: 300, scale: 3, rotation: 360, duration: 3, backgroundColor: 'pink'},
+        //     {x: 100, y: 100, scale: 0.5, rotation: 0, duration: 5, backgroundColor: 'blue'},
+        // )
+
+        /**
+         * delay 지연시간
+         * repeat 몇 번 반복할지 <-1로 할 경우 무한 반복>
+         * repeatDelay repeat할 때 지연시간
+         * yoyo: true로 설정 시 애니메이션이 앞 뒤로 재생
+         **/
+        // gsap.to('.orange', {x: 300, repeat: -1, repeatDelay: 1, yoyo: true})
+
+        /**
+         * ease 애니메이션이 재생될 때 변경 속도 제어
+         * ease: "bounce"
+         * https://gsap.com/docs/v3/Eases/
+         **/
+        // gsap.to('.orange', {duration: 3, x: 600});
+        // gsap.to('.pink', {duration: 3, x: 600, ease: "power3.inOut"}); // 문자열 대신 Power3.easeInOut
+    </script>
+</body>
+</html>

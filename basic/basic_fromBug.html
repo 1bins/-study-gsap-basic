@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            background: gray;
+        }
+        .circle{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            width: 40vw;
+            height: 40vw;
+            border-radius: 50%;
+            background: dodgerblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            border: 6px solid black;
+            overflow: hidden;
+        }
+        .bg{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            width: 40vw;
+            height: 40vw;
+            border-radius: 50%;
+            background: darkblue;
+        }
+        .circle span{
+            color: #fff;
+            font-size: 5vw;
+            position:relative;
+            z-index: 100;
+        }
+    </style>
+    <title>GSAP PART1</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+</head>
+<body>
+    <div class="circle">
+        <div class="bg"></div>
+        <span>hover me</span>
+    </div>
+    <script>
+        /**
+         * from의 문제점
+         * 아래 스크립트를 실행했을 때 마우스를 빠르게 hover할 경우 원의 크기가 작아짐 =>
+         * from이 초기값을 점점 작아지는 값으로 인식하는 버그 발생 => fromTo를 사용
+         * https://gsap.com/docs/v3/GSAP/gsap.getProperty()/
+         **/
+        const circle = document.querySelector(".circle")
+        const bg = document.querySelector(".bg")
+
+        // getProperty 해당 아이템의 값을 확인 할 수 있는 기능 
+        let getter = gsap.getProperty(bg);
+        let x = getter('width', 'vw')
+
+        console.log(x)
+
+        circle.addEventListener('mouseenter', () => {
+            gsap.fromTo(bg, {scale: 0}, {scale: 1});
+        })
+
+    </script>
+</body>
+</html>
