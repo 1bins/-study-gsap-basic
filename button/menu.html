@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP PART1</title>
+    <style>
+        body{
+            background: black;
+            font-weight: bold;
+        }
+        ul{
+            font-size: 30px;
+            color: gray;
+        }
+        li{
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .dash{
+            width: 15px;
+            height: 4px;
+            background: #3e3e3e;
+            margin-right: 10px;
+            opacity:0;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+</head>
+<body>
+    <ul>
+        <li class="item">
+            <div class="dash"></div>
+            <div class="text">Home</div>
+        </li>
+        <li class="item">
+            <div class="dash"></div>
+            <div class="text">About</div>
+        </li>
+        <li class="item">
+            <div class="dash"></div>
+            <div class="text">Product</div>
+        </li>
+        <li class="item">
+            <div class="dash"></div>
+            <div class="text">Contect</div>
+        </li>
+    </ul>
+    <script>
+        const items = document.querySelectorAll('.item');
+        
+        // gsap의 모든 tween의 default값을 설정해주는 메서드
+        gsap.defaults({duration: 0.3})
+
+        items.forEach((elem) => {
+            const tl = gsap.timeline({paused: true});
+            tl.to(elem.querySelector('.dash'), {opacity: 1, x: -5, backgroundColor: 'yellow'})
+              .to(elem.querySelector('.text'), {x:5, color: '#fff'}, '<');
+            elem.addEventListener('mouseenter', () => { tl.play() });
+            elem.addEventListener('mouseleave', () => { tl.reverse() });
+        })
+    </script>
+</body>
+</html>
