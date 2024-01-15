@@ -1,0 +1,16 @@
+window.addEventListener('DOMContentLoaded', function () {
+    let tl = gsap.timeline();
+    tl.from('.green_right', {opacity: 0, x: 50, y: 50})
+       .from('.green_left, .blue01, .blue02', {opacity: 0, y: 50})
+       .from('.flower_left', {opacity: 0, x: -50, y: -50})
+       .from('.flower_right', {opacity: 0, x: 50, y: 50})
+       .from('.grass01, .grass02', {opacity: 0, y: 30})
+       .from('.grass01', {duration: 3, transformOrigin: '0% 100%', rotate: '3deg', repeat: -1, yoyo: true}, '<')
+       .from('.cat', {opacity: 0, y: -30}, '<')
+       .from('.bug', {opacity: 0}, '<')
+       .from('.bug', {y: 30, repeat: -1, yoyo: true}, '<')
+       .from('.main_title', {opacity: 0, xPercent: -50, y: 30})
+       .from('.explore', {opacity: 0, y: 30})
+       .from('.cloud-small',{duration:10, x:-530, opacity:0}, 0)
+       .from('.cloud-big',{duration:10, x:-330, opacity:0}, 0)
+})
